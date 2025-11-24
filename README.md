@@ -30,7 +30,7 @@ A simple Retrieval-Augmented Generation (RAG) assistant that indexes your PDF fi
 								 ┌──────────────────────────────┐   ┌──────────────────────────────┐
 								 │ Assistant responds with      │   │ Assistant responds with     │
 								 │ answer + citations (sources) │   │ general answer (no sources)  │
-										 └──────────────────────────────┘   └──────────────────────────────┘
+								 └──────────────────────────────┘   └──────────────────────────────┘
 
 
 
