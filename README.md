@@ -3,6 +3,12 @@
 
 A simple Retrieval-Augmented Generation (RAG) assistant that indexes your PDF files into a ChromaDB vector store and queries them using a local LLM via Ollama.
 
+This RAG system uses two simple agents:
+
+A Router Agent that checks if the user query matches the vector database.
+
+An Answer Agent that either uses RAG retrieval when a match is found or sends the query directly to the LLM when no relevant data exists.
+
 ---
 
 # Flow diagram
