@@ -36,3 +36,10 @@ ollama pull llama3
 ## 5. Run the assistant:
 
 python -m app.main 
+
+
+## Example
+
+<p align="center">
+  <img src="title.gif" alt="Project Banner" width="600">
+</p>
