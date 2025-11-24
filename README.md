@@ -45,14 +45,30 @@ python -m app.main
 	<img src="RAG-SOC.gif" alt="Demo GIF" width="600">
 </p>
 
+# Flow diagram
+                           ┌───────────────────────────────┐
+                           │          User Question         │
+                           │      (e.g., "What is a SoC?")  │
+                           └───────────────┬───────────────┘
+                                           │
+                                           ▼
+                     ┌────────────────────────────────────────────┐
+                     │   Step 1: Search Document Library          │
+                     │   (Check Vector Database for a Match)      │
+                     └───────────────────────┬────────────────────┘
+                                             │
+                                  ┌──────────┴───────────┐
+                                  │                      │
+                                  ▼                      ▼
+                    ┌───────────────────────┐   ┌───────────────────────────┐
+                    │    Step 2A: RAG       │   │    Step 2B: Direct LLM     │
+                    │ (Answer from your     │   │ (General LLM knowledge —   │
+                    │   uploaded SoC docs)  │   │  used when no match found) │
+                    └─────────────┬─────────┘   └────────────┬──────────────┘
+                                  │                          │
+                                  ▼                          ▼
+                 ┌──────────────────────────────┐   ┌──────────────────────────────┐
+                 │ Assistant responds with       │   │ Assistant responds with       │
+                 │ answer + citations (sources) │   │ general answer (no sources)   │
+                 └──────────────────────────────┘   └──────────────────────────────┘
 
-flowchart TD
-    U[User Question<br/>(e.g., "What is a SoC?")] --> S1[Step 1: Try to Find Info<br/>in the Document Library<br/>(Search in Vector Database)]
-
-    S1 --> D{Match in<br/>vector database?}
-
-    D -->|Yes| RAG[Step 2A: RAG Answer<br/>(from your uploaded SoC documents)]
-    D -->|No| LLM[Step 2B: Direct LLM Answer<br/>(use general LLM knowledge)]
-
-    RAG --> RAGRESP[Assistant responds with<br/>answer + citations (sources)]
-    LLM --> LLMRESP[Assistant responds with<br/>general answer<br/>(no sources)]
