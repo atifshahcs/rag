@@ -5,6 +5,37 @@ A simple Retrieval-Augmented Generation (RAG) assistant that indexes your PDF fi
 
 ---
 
+# Flow diagram
+										                           ┌───────────────────────────────┐
+										                           │          User Question         │
+										                           │      (e.g., "What is a SoC?")  │
+										                           └───────────────┬───────────────┘
+										                                           │
+										                                           ▼
+										                     ┌────────────────────────────────────────────┐
+										                     │   Step 1: Search Document Library          │
+										                     │   (Check Vector Database for a Match)      │
+										                     └───────────────────────┬────────────────────┘
+										                                             │
+										                                  ┌──────────┴───────────┐
+										                                  │                      │
+										                                  ▼                      ▼
+										                    ┌───────────────────────┐   ┌───────────────────────────┐
+										                    │    Step 2A: RAG       │   │    Step 2B: Direct LLM     │
+										                    │ (Answer from your     │   │ (General LLM knowledge —   │
+										                    │   uploaded SoC docs)  │   │  used when no match found) │
+										                    └─────────────┬─────────┘   └────────────┬──────────────┘
+										                                  │                          │
+										                                  ▼                          ▼
+										                 ┌──────────────────────────────┐   ┌──────────────────────────────┐
+										                 │ Assistant responds with      │   │ Assistant responds with     │
+										                 │ answer + citations (sources) │   │ general answer (no sources)  │
+										                 └──────────────────────────────┘   └──────────────────────────────┘
+
+
+
+
+
 ## 1. Add your data
 
 Put your PDF files into the `data/` folder:
@@ -44,31 +75,4 @@ python -m app.main
 <p align="center">
 	<img src="RAG-SOC.gif" alt="Demo GIF" width="600">
 </p>
-
-# Flow diagram
-                           ┌───────────────────────────────┐
-                           │          User Question         │
-                           │      (e.g., "What is a SoC?")  │
-                           └───────────────┬───────────────┘
-                                           │
-                                           ▼
-                     ┌────────────────────────────────────────────┐
-                     │   Step 1: Search Document Library          │
-                     │   (Check Vector Database for a Match)      │
-                     └───────────────────────┬────────────────────┘
-                                             │
-                                  ┌──────────┴───────────┐
-                                  │                      │
-                                  ▼                      ▼
-                    ┌───────────────────────┐   ┌───────────────────────────┐
-                    │    Step 2A: RAG       │   │    Step 2B: Direct LLM     │
-                    │ (Answer from your     │   │ (General LLM knowledge —   │
-                    │   uploaded SoC docs)  │   │  used when no match found) │
-                    └─────────────┬─────────┘   └────────────┬──────────────┘
-                                  │                          │
-                                  ▼                          ▼
-                 ┌──────────────────────────────┐   ┌──────────────────────────────┐
-                 │ Assistant responds with       │   │ Assistant responds with       │
-                 │ answer + citations (sources) │   │ general answer (no sources)   │
-                 └──────────────────────────────┘   └──────────────────────────────┘
 
