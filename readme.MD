@@ -17,22 +17,22 @@ cp /path/to/your/file.pdf data/
 
 
 ## 2. Install dependencies:
-```bash	
+
 pip install -r requirements.txt
 	
 ## 3. ingest docs into Chroma DB:
-```bash	
+
 python -m app.ingest
 	
 ## 4. Install Ollama
-```bash	
+
 sudo snap install Ollam
 	
 	# pull the model
-```bash	
+
 ollama pull llama3
 
 
 ## 5. Run the assistant:
-```bash	
+
 python -m app.main 
