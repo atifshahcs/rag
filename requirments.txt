@@ -1,0 +1,11 @@
+langchain
+langchain-core
+langchain-community
+
+chromadb
+sentence-transformers
+pypdf
+
+langgraph
+
+

@@ -1,0 +1,18 @@
+cat > .gitignore << 'EOF'
+# IDE settings
+.vscode/
+
+# Python virtual environments
+rag-env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Data and DB folders – keep folders, ignore contents
+data/*
+
+chroma_db/*
+
+EOF
+
