@@ -41,5 +41,5 @@ python -m app.main
 ## Example
 
 <p align="center">
-  <img src="RAG-SOC.gif" alt="Project Banner" width="600">
+  <img src="/RAG-SOC.gif" alt="Project Banner" width="600">
 </p>
